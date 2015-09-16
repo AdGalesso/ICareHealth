@@ -1,0 +1,91 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="col-md-8" ng-app="BestPlanApp">
+    <h1>What is the best plan for me?</h1>
+    <p class="lead">Please, give us some details and we will find the best plan for you</p>
+    <div ng-controller="BestPlanController as bestPlan">
+        <form class="form-horizontal" name="userPlanForm" ng-if="!bestPlan.hasResults" novalidate>
+            <div class="form-group">
+                <label for="name">
+                    <span class="fa-stack fa-lg">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-user fa-stack-1x fa-inverse"></i>
+                    </span>
+                    &nbsp;My name is *
+                </label>
+                <input type="text" maxlength="255" class="form-control" id="name" name="name" placeholder="Write your full name here" ng-model="bestPlan.user.name" ng-maxlength="255" required />
+                <p class="error-block ng-hide" ng-show="userPlanForm.name.$invalid && !userPlanForm.name.$pristine">You name is required</p>
+            </div>
+            <div class="row">
+                <div class="col-sm-5">
+                    <div class="form-group">
+                        <label for="birthdate">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-birthday-cake fa-stack-1x fa-inverse"></i>
+                            </span>
+                            &nbsp;I was born in *
+                        </label>
+                        <select id="birthdate" class="form-control" ng-model="bestPlan.user.birthYear" ng-options="y for y in bestPlan.years"></select>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-offset-1">
+                    <div class="form-group gender">
+                        <label for="name">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-venus-mars fa-stack-1x fa-inverse"></i>
+                            </span>
+                            &nbsp;And I'm
+                        </label>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <div class="checkbox">
+                                    <input type="radio" name="gender" id="male" class="sr-only" value="M" ng-model="bestPlan.user.gender" />
+                                    <label for="male">
+                                        <i class="fa fa-male"></i> Male
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-sm-9">
+                                <div class="checkbox">
+                                    <input type="radio" name="gender" id="female" class="sr-only" value="F" ng-model="bestPlan.user.gender" />
+                                    <label for="female">
+                                        <i class="fa fa-female"></i> Female
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="pull-right">
+                <button type="submit" class="btn btn-primary fixed-w" ng-disabled="userPlanForm.$invalid || bestPlan.sending" ng-click="bestPlan.getBestPlan()">
+                    <span ng-if="!bestPlan.sending">What fits me better?</span>
+                    <span ng-if="bestPlan.sending"><i class="fa fa-spinner fa-pulse"></i></span>
+                </button>
+            </div>
+        </form>
+        <div class="results" ng-if="bestPlan.hasResults">
+            <p>Thank you <b>{{bestPlan.user.name}}</b> for sending your data to us!</p>
+            <p>Please, follows bellow our search regarding you name, age and gender:</p>
+            <div class="row">
+                <div class="col-md-2">
+                    <i class="fa fa-heartbeat fa-5x" style="margin: 15px;"></i>
+                </div>
+                <div class="col-md-8">
+                    <h2>{{bestPlan.user.plan.Name}}</h2>
+                    <p>For the small price of {{bestPlan.user.plan.Value | currency:"AUD$"}}</p>
+                </div>
+            </div>
+            <p><a href="/Home/Requests">Hey... Check out all requests!</a></p>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    @Scripts.Render("~/bundles/bestplan")
+}

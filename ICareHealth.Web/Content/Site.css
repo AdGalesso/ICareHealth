@@ -1,0 +1,63 @@
+﻿html {
+    background: #f3f3f3 url(img/bg-footer.png);
+    height:100%;
+    min-height:100%;
+}
+
+body {
+    padding-bottom: 20px;
+    font-family: 'Trebuchet MS';
+    background: url(img/bg-explore.png) 100% 100% no-repeat;
+    height:100%;
+    min-height:100%;
+}
+
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.gender #male:checked + label { 
+   color:#4949CC;
+}
+
+.gender #female:checked + label { 
+   color:#CC4960;
+}
+
+.fork-me {
+    position: absolute; 
+    top: 0; 
+    right: 0; 
+    border: 0;
+}
+
+.fixed-w {
+    width:180px;
+}
+
+.error-block {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+    position: absolute;
+    right: 0;
+}
+
+.m-top-10 {
+    margin-top: 10px;
+}
+
+footer {
+    background-color:#000;
+    position:fixed;
+    bottom:0;
+    width:100%;
+}
+
+    footer p {
+        color:#fff;
+        text-align:center;
+        font-size:12px;
+        margin:auto;
+    }
