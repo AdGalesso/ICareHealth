@@ -1,12 +1,15 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h2>Requests</h2>
 <div class="col-md-8" ng-app="BestPlanApp">
-    <div>
-        <div ng-controller="UserController as user">
-            <span ng-if="user.fetching"><i class="fa fa-spinner fa-pulse"></i>&nbsp;Fetching Data...</span>
-            <span ng-show="user.empty" class="ng-hide">There are no requests</span>
+    <div class="row">
+        <h2 class="pull-left">Requests</h2>
+        <span class="p-top-25 pull-left col-md-offset-1"><a href="/">Again!</a></span>
+    </div>
+    <div ng-controller="UserController as user">
+        <span ng-if="user.fetching"><i class="fa fa-spinner fa-pulse"></i>&nbsp;Fetching Data...</span>
+        <span ng-show="user.empty" class="ng-hide">There are no requests</span>
+        <div class="row">
             <table class="ng-hide table table-bordered table-striped" ng-show="user.list.length > 0">
                 <thead>
                     <tr>
@@ -26,7 +29,6 @@
                 </tbody>
             </table>
         </div>
-        <p class="p-top-10"><a href="/">Again!</a></p>
     </div>
 </div>
 @section scripts {

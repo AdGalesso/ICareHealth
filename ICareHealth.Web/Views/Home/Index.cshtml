@@ -62,18 +62,20 @@
                     </div>
                 </div>
             </div>
-            <div class="pull-right">
-                <button type="submit" class="btn btn-primary fixed-w" ng-disabled="userPlanForm.$invalid || bestPlan.sending" ng-click="bestPlan.getBestPlan()">
-                    <span ng-if="!bestPlan.sending">What fits me better?</span>
-                    <span ng-if="bestPlan.sending"><i class="fa fa-spinner fa-pulse"></i></span>
-                </button>
+            <div class="row">
+                <div class="pull-right p-top-10">
+                    <button type="submit" class="btn btn-primary fixed-w" ng-disabled="userPlanForm.$invalid || bestPlan.sending" ng-click="bestPlan.getBestPlan()">
+                        <span ng-if="!bestPlan.sending">What fits me better?</span>
+                        <span ng-if="bestPlan.sending"><i class="fa fa-spinner fa-pulse"></i></span>
+                    </button>
+                </div>
             </div>
         </form>
         <div class="results" ng-if="bestPlan.hasResults">
             <p>Thank you <b>{{bestPlan.user.name}}</b> for sending your data to us!</p>
             <p>Please, follows bellow our search regarding you name, age and gender:</p>
             <div class="row">
-                <div class="col-md-2">
+                <div class="col-md-2" style="text-align:center;">
                     <i class="fa fa-heartbeat fa-5x" style="margin: 15px;"></i>
                 </div>
                 <div class="col-md-8">
